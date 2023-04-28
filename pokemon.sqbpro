@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/Users/jenniferoh/Desktop/INFO330-CreatingRelations2-main/pokemon.sqlite" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="3049"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,7:mainpokemon"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE pokemon_stats (
+pokemon INTEGER,
+stat_name TEXT,
+stat_value INTEGER,
+PRIMARY KEY (pokemon, stat_name),
+FOREIGN KEY (pokemon) REFERENCES pokemon(pokemon)
+);
+
+INSERT INTO pokemon_stats (pokemon, stat_name, stat_value)
+SELECT pokemon_id, 'total', total FROM pokemon;
+
+INSERT INTO pokemon_stats (pokemon, stat_name, stat_value)
+SELECT pokemon_id, 'hp', hp FROM pokemon;
+
+INSERT INTO pokemon_stats (pokemon, stat_name, stat_value)
+SELECT pokemon_id, 'attack', attack FROM pokemon;
+
+INSERT INTO pokemon_stats (pokemon, stat_name, stat_value)
+SELECT pokemon_id, 'defense', defense FROM pokemon;
+
+INSERT INTO pokemon_stats (pokemon, stat_name, stat_value)
+SELECT pokemon_id, 'sp_attack', sp_attack FROM pokemon;
+
+INSERT INTO pokemon_stats (pokemon, stat_name, stat_value)
+SELECT pokemon_id, 'sp_defense', sp_defense FROM pokemon;
+
+INSERT INTO pokemon_stats (pokemon, stat_name, stat_value)
+SELECT pokemon_id, 'speed', speed FROM pokemon;
+
+INSERT INTO pokemon_stats (pokemon, stat_name, stat_value)
+SELECT pokemon_id, 'generation', generation FROM pokemon;
+
+INSERT INTO pokemon_stats (pokemon, stat_name, stat_value)
+SELECT pokemon_id, 'legendary', legendary FROM pokemon;
+</sql><sql name="SQL 2">INSERT INTO pokemon (pokemon, type_1, type_2, total, hp, attack, defense, sp_attack, sp_defense, speed, generation, legendary)
+SELECT Name, Type_1, Type_2, Total, HP, Attack, Defense, Sp_Atk, Sp_Def, Speed, Generation, Legendary
+FROM imported_pokemon_data;
+</sql><sql name="SQL 3">CREATE TABLE pokemon_types (
+pokemon_id INTEGER,
+type_name TEXT,
+PRIMARY KEY (pokemon_id, type_name),
+FOREIGN KEY (pokemon_id) REFERENCES pokemon(pokemon_id)
+);
+
+INSERT INTO pokemon_types (pokemon_id, type_name)
+SELECT pokemon_id, type_1 FROM pokemon;
+INSERT INTO pokemon_types (pokemon_id, type_name)
+SELECT pokemon_id, type_2 FROM pokemon
+WHERE type_
+</sql><sql name="SQL 4">INSERT INTO pokemon (name, type_1, type_2, total, hp, attack, defense, sp_atk, sp_def, speed, generation, legendary)
+VALUES ('Huskichu', 'Mascot', '', 500, 100, 100, 100, 200, 100, 100, 5, 1);
+
+INSERT INTO pokemon (name, type_1, type_2, total, hp, attack, defense, sp_atk, sp_def, speed, generation, legendary)
+VALUES ('Cougarite', 'Mascot', '', 600, 20, 5, 5, 5, 1, 1, 2, 0);
+</sql><current_tab id="1"/></tab_sql></sqlb_project>
